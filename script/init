@@ -168,13 +168,15 @@ function setup_ssh() {
   print_success "SSH has been set up."
 }
 
-function setup_homebrew() {
-  print_info 'Setting up Homebrew'
-  if [[ ! $(cmd_exists "brew") ]]; then
+function install_homebrew() {
+  print_info 'Installing Homebrew'
+
+  print_info $(cmd_exists "brew")
+  if [[ '1' == $(cmd_exists "brew") ]]; then
     print_info "Installing Homebrew"
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
-  print_success "Homebrew has been set up."
+  print_success "Homebrew has been installed."
 }
 
 function install_zsh() {
@@ -210,9 +212,27 @@ function install_zsh() {
   fi
 }
 
+function setup_homebrew() {
+  print_info 'Setting up Homebrew'
+
+  if [[ $(cmd_exists "brew") ]]; then
+    brew update
+    brew doctor
+
+    # set up git and zsh first
+    brew install git --with-brewed-curl --with-brewed-openssl
+    brew install zsh
+    #brew cask install atom
+  fi
+
+  print_success 'Homebrew has been set up'
+}
+
 ask_for_sudo
 setup_hostname
 setup_xcode
 setup_ssh
+install_homebrew
 setup_homebrew
+
 
