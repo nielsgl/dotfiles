@@ -274,22 +274,6 @@ setup_gitconfig
 install_homebrew
 
 install_zsh
-# install_brewfile
-
+install_brewfile
 
 # install_dotfiles
-
-# echo $SHELL
-
-
-
-
-# if ! cmd_exists 'brew'; then
-#   echo $(cmd_exists 'brew')
-#   echo 'brew exists'
-# fi
-#
-# if ! cmd_exists 'zzz'; then
-#   echo $(cmd_exists 'zzz')
-#   echo 'zzz exists'
-# fi
