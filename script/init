@@ -214,11 +214,18 @@ function install_zsh() {
       fi
     # If the platform is OS X, tell the user to install zsh :)
     elif [[ $platform == 'Darwin' ]]; then
-      echo "We'll install zsh, then re-run this script!"
+      print_info "We'll install zsh, then re-run this script!"
       brew install zsh
+
+      # Set the default shell to zsh if it isn't currently set to zsh
+      if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+        chsh -s $(which zsh)
+      fi
+
       exit
     fi
   fi
+
 }
 
 function install_homebrew() {
