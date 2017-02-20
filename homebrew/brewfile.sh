@@ -10,6 +10,7 @@ function install_brewfile() {
     brew tap homebrew/bundle
     print_info 'Installing Brewfile.'
     brew bundle
+    sudo chown -R ~/.config
     print_success 'Brewfile has been installed.'
   fi
 }
