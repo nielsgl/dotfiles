@@ -6,29 +6,32 @@
 # using Homebrew.
 
 function install_homebrew() {
-  print_info 'Checking for Homebrew'
+  ask_for_confirmation "Do you want to setup Homebrew?"
+  if answer_is_yes; then
+    print_info 'Checking for Homebrew'
 
-  if ! cmd_exists "brew"; then
-    print_info "Installing Homebrew"
+    if ! cmd_exists "brew"; then
+      print_info "Installing Homebrew"
 
-    # Install the correct homebrew for each OS type
-    if test "$(uname)" = "Darwin"
-    then
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
-    then
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+      # Install the correct homebrew for each OS type
+      if test "$(uname)" = "Darwin"
+      then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+      then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+      fi
+
+      brew update
     fi
 
-    brew update
-  fi
+    if ! brew_test_package 'git'; then
+      print_info 'Installing Git with Homebrew.'
+      brew install git --with-brewed-curl --with-brewed-openssl --with-gettext
+    fi
 
-  if ! brew_test_package 'git'; then
-    print_info 'Installing Git with Homebrew.'
-    brew install git --with-brewed-curl --with-brewed-openssl --with-gettext
+    print_success "Homebrew has been setup."
   fi
-
-  print_success "Homebrew has been setup."
 }
 
 function main() {

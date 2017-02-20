@@ -4,11 +4,14 @@
 #
 
 function install_brewfile() {
-  print_info 'Tapping homebrew/bundle.'
-  brew tap homebrew/bundle
-  print_info 'Installing Brewfile.'
-  brew bundle
-  print_success 'Brewfile has been installed.'
+  ask_for_confirmation "Do you want to install Brewfile?"
+  if answer_is_yes; then
+    print_info 'Tapping homebrew/bundle.'
+    brew tap homebrew/bundle
+    print_info 'Installing Brewfile.'
+    brew bundle
+    print_success 'Brewfile has been installed.'
+  fi
 }
 
 function main() {

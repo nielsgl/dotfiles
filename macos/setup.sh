@@ -15,8 +15,8 @@ function setup_hostname () {
     print_info "Setting computer name to $compname"
     sudo scutil --set ComputerName "$compname"
     sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
+    print_success "Hostname has been set up."
   fi
-  print_success "Hostname has been set up."
 }
 
 function storeupdate() {

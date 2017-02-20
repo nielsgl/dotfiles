@@ -4,13 +4,15 @@
 #
 
 function setup_ssh() {
-  print_info 'Checking for SSH key, generating one if it does not exist...'
-  if [ ! -f ~/.ssh/id_rsa.pub ]; then
-    ask "Enter email address:" email
-    ssh-keygen -t rsa -b 4096 -C "$email"
-    ssh-add ~/.ssh/id_rsa
+  ask_for_confirmation "Do you want to generate SSH keys if they don't exist?"
+  if answer_is_yes; then
+    if [ ! -f ~/.ssh/id_rsa.pub ]; then
+      ask "Enter email address:" email
+      ssh-keygen -t rsa -b 4096 -C "$email"
+      ssh-add ~/.ssh/id_rsa
+    fi
+    print_success "SSH has been set up."
   fi
-  print_success "SSH has been set up."
 }
 
 function main() {

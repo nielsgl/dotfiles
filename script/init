@@ -108,6 +108,6 @@ for setup in macos xcode ssh git homebrew zsh; do
 done
 
 # install_zsh
-# . homebrew/brewfile.sh
+. homebrew/brewfile.sh
 
 # install_dotfiles
