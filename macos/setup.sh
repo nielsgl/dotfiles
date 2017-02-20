@@ -24,7 +24,7 @@ function storeupdate() {
   if answer_is_yes; then
     print_info "Update apps from the App Store"
     sudo softwareupdate -i -a
-    print_succcess "Completed updates from App Store"
+    print_success "Completed updates from App Store"
   fi
 }
 
