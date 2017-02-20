@@ -20,20 +20,22 @@ brew 'youtube-dl'
 brew 'coreutils'
 brew 'freetype'
 brew 'git-flow-avh'
-brew 'graphviz', args: ['with-freetype']
+brew 'graphviz', args: ['with-freetype', 'with-bindings', 'with-x11']
 brew 'grc'
 brew 'nmap'
 brew 'ossp-uuid'
 brew 'pwgen'
 brew 'redis', restart_service: true
-brew 'sqlite', args: ['with-functions']
+brew 'sqlite', args: ['with-dbstat', 'with-functions']
 brew 'ssh-copy-id'
 brew 'tree'
-brew 'zsh'
+brew 'zsh', args: ['with-unicode9']
 
 cask 'adobe-reader'
 cask 'android-file-transfer'
 cask 'atom'
+cask 'dashlane'
+cask 'docker'
 cask 'dropbox'
 cask 'droplr'
 cask 'filebot'
