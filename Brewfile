@@ -9,6 +9,9 @@ tap 'homebrew/services'
 tap 'homebrew/science'
 tap 'homebrew/versions'
 
+cask 'java'
+cask 'xquartz'
+
 brew 'curl'
 brew 'git', args: ['with-brewed-curl', 'with-brewed-openssl', 'with-gettext']
 brew 'htop', args: ['with-ncurses']
@@ -20,7 +23,7 @@ brew 'youtube-dl'
 brew 'coreutils'
 brew 'freetype'
 brew 'git-flow-avh'
-brew 'graphviz', args: ['with-freetype', 'with-bindings', 'with-x11']
+brew 'graphviz', args: ['with-freetype', 'with-x11']
 brew 'grc'
 brew 'nmap'
 brew 'ossp-uuid'
@@ -52,4 +55,3 @@ cask 'skim'
 cask 'skype'
 cask 'transmission'
 cask 'vlc'
-cask 'xquartz'
