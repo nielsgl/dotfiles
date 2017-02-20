@@ -221,21 +221,50 @@ function install_zsh() {
   fi
 }
 
-function setup_homebrew() {
-  print_info 'Setting up Homebrew'
+function install_homebrew() {
+  print_info 'Checking for Homebrew'
 
-  if [[ $(cmd_exists "brew") ]]; then
+  if ! cmd_exists "brew"; then
+    print_info "Installing Homebrew"
+
+    # Install the correct homebrew for each OS type
+    if test "$(uname)" = "Darwin"
+    then
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+    then
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+    fi
+
     brew update
-    brew doctor
-
-    # set up git and zsh first
-    brew install git --with-brewed-curl --with-brewed-openssl
-    brew install zsh
-    #brew cask install atom
   fi
 
-  print_success 'Homebrew has been set up'
+  if ! brew_test_package 'git'; then
+    print_info 'Installing Git with Homebrew.'
+    brew install git --with-brewed-curl --with-brewed-openssl --with-gettext
+  fi
+
+  print_success "Homebrew has been setup."
 }
+
+# function setup_homebrew() {
+#   print_info 'Setting up Homebrew'
+#
+#   if cmd_exists "brew"; then
+#     brew update
+#     brew doctor
+#
+#     # set up git and zsh first
+#     # brew install git --with-brewed-curl --with-brewed-openssl --with-gettext
+#     brew install zsh
+#     #brew cask install atom
+#   fi
+#
+#   print_success 'Homebrew has been set up'
+# }
+
+
+source script/bootstrap --source-only
 
 ask_for_sudo
 setup_hostname
