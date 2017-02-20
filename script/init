@@ -107,7 +107,14 @@ for setup in macos xcode ssh git homebrew zsh; do
   . $setup/setup.sh
 done
 
-# install_zsh
 . homebrew/brewfile.sh
 
+# find . -name install.sh -print0 | while read installer ; do . $installer ; done
+# find . -name install.sh | while read fname; do
+#   source $fname
+# done
+. node/install.sh
+. ruby/install.sh
+
+print_success "Done!"
 # install_dotfiles

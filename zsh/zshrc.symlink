@@ -51,6 +51,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+# aws brew bundler docker gem history jira jsontools npm osx pyenv pylint python rails redis-cli
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -83,3 +85,12 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# Load nodenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(nodenv init -)"
+
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(rbenv init -)"
