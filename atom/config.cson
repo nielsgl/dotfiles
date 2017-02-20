@@ -1,6 +1,10 @@
 "*":
   core:
+    disabledPackages: [
+      "background-tips"
+    ]
     telemetryConsent: "limited"
+    warnOnLargeFileLimit: 10
   editor:
     showIndentGuide: true
     softWrap: true
