@@ -17,6 +17,12 @@ function install_zsh() {
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         print_success 'Oh My ZSH has been installed.'
       fi
+
+      # Set the default shell to zsh if it isn't currently set to zsh
+      if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+        sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells'
+        chsh -s $(which zsh)
+      fi
     else
       # If zsh isn't installed, get the platform of the current machine
       platform=$(uname);
@@ -36,12 +42,6 @@ function install_zsh() {
         if ! brew_test_package 'zsh'; then
           print_info 'Installing ZSH with Homebrew'
           brew install zsh --with-unicode9
-        fi
-
-        # Set the default shell to zsh if it isn't currently set to zsh
-        if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-          sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells'
-          chsh -s $(which zsh)
         fi
 
         exit
