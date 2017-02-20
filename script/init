@@ -50,8 +50,8 @@ function ask_for_confirmation() {
 
 function cmd_exists() {
   [ -x "$(command -v "$1")" ] \
-    && printf 0 \
-    || printf 1
+    && return 0 \
+    || return 1
 }
 
 function print_question() {
