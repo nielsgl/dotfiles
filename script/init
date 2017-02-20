@@ -79,7 +79,7 @@ function print_error() {
 
 function print_info() {
   # Print output in purple
-  printf "\n\e[0;34m $1\e[0m\n\n"
+  printf "\n\e[0;34m $1\e[0m\n"
 }
 
 function print_success() {
@@ -87,6 +87,15 @@ function print_success() {
   printf "\e[0;32m  [✔] $1\e[0m\n"
 }
 
+function brew_test_package() {
+  # print_info 'testing for packages'
+  if ! brew ls --versions $1 > /dev/null; then
+    #statements
+    # print_info "$1 is not installed"
+    return 1;
+  fi
+  return 0;
+}
 
 
 # ask_for_confirmation "Do you want to update the hostname?"
