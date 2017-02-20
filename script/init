@@ -125,7 +125,7 @@ function setup_xcode() {
   if [[ ! "$(type -P gcc)" ]] && is_osx; then
     print_error "XCode or the Command Line Tools for XCode must be installed first."
     # exit 1
-    
+
     ###############################################################################
     # XCode Command Line Tools                                                    #
     ###############################################################################
@@ -177,27 +177,17 @@ function setup_ssh() {
   print_success "SSH has been set up."
 }
 
-function install_homebrew() {
-  print_info 'Installing Homebrew'
-
-  print_info $(cmd_exists "brew")
-  if [[ '1' == $(cmd_exists "brew") ]]; then
-    print_info "Installing Homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-  print_success "Homebrew has been installed."
-}
-
 function install_zsh() {
-  # Test to see if zshell is installed.  If it is:
-  if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
+  # Test to see if zshell is installed with brew
+
+  if brew_test_package 'zsh'; then
+    print_success 'Homebrew has installed ZSH.'
+
     # Install Oh My Zsh if it isn't already present
-    if [[ ! -d $dir/oh-my-zsh/ ]]; then
+    if [[ ! -d ~/.oh-my-zsh/ ]]; then
+      print_info 'Installing Oh My ZSH.'
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
-    # Set the default shell to zsh if it isn't currently set to zsh
-    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-      chsh -s $(which zsh)
+      print_success 'Oh My ZSH has been installed.'
     fi
   else
     # If zsh isn't installed, get the platform of the current machine
@@ -277,7 +267,31 @@ ask_for_sudo
 setup_hostname
 setup_xcode
 setup_ssh
+setup_gitconfig
 install_homebrew
-setup_homebrew
+
+install_zsh
+# install_dotfiles
+
+# echo $SHELL
 
 
+
+
+# if ! cmd_exists 'brew'; then
+#   echo $(cmd_exists 'brew')
+#   echo 'brew exists'
+# fi
+#
+# if ! cmd_exists 'zzz'; then
+#   echo $(cmd_exists 'zzz')
+#   echo 'zzz exists'
+# fi
+#
+# . script/bla
+#
+# echo $DOTFILES_ROOT
+#
+#
+# echo 'bla'
+# yo
