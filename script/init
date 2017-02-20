@@ -39,11 +39,11 @@ function answer_is_yes() {
 
 function ask() {
   print_question "$1"
-  read $2
+  read -e $2
 }
 
 function ask_for_confirmation() {
-  print_question "$1 (y/n) "
+  print_question "$1 (y/n)"
   read -n 1
   printf "\n"
 }
@@ -56,7 +56,7 @@ function cmd_exists() {
 
 function print_question() {
   # Print output in yellow
-  printf "\e[0;33m  [?] $1\e[0m"
+  printf "\e[0;33m  [?] $1\e[0m "
 }
 
 function get_answer() {
@@ -88,23 +88,11 @@ function print_success() {
 }
 
 function brew_test_package() {
-  # print_info 'testing for packages'
   if ! brew ls --versions $1 > /dev/null; then
-    #statements
-    # print_info "$1 is not installed"
     return 1;
   fi
   return 0;
 }
-
-
-# ask_for_confirmation "Do you want to update the hostname?"
-# if answer_is_yes; then
-#   print_success "yeey"
-# else
-#   print_error "boo"
-# fi
-
 
 function setup_hostname () {
   ask_for_confirmation "Do you want to update the hostname?"
@@ -177,6 +165,28 @@ function setup_ssh() {
   print_success "SSH has been set up."
 }
 
+function setup_gitconfig () {
+  if ! [ -f git/gitconfig.local.symlink ]
+  then
+    print_info 'Setting up gitconfig.'
+
+    git_credential='cache'
+    if [ "$(uname -s)" == "Darwin" ]
+    then
+      git_credential='osxkeychain'
+    fi
+
+    ask "What is your github author name?" git_authorname
+    ask 'What is your github author email?' git_authoremail
+
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+
+    print_success 'Setting up gitconfig complete.'
+  fi
+}
+
+
+
 function install_zsh() {
   # Test to see if zshell is installed with brew
 
@@ -209,6 +219,7 @@ function install_zsh() {
 
       # Set the default shell to zsh if it isn't currently set to zsh
       if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+        sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells'
         chsh -s $(which zsh)
       fi
 
@@ -244,21 +255,13 @@ function install_homebrew() {
   print_success "Homebrew has been setup."
 }
 
-# function setup_homebrew() {
-#   print_info 'Setting up Homebrew'
-#
-#   if cmd_exists "brew"; then
-#     brew update
-#     brew doctor
-#
-#     # set up git and zsh first
-#     # brew install git --with-brewed-curl --with-brewed-openssl --with-gettext
-#     brew install zsh
-#     #brew cask install atom
-#   fi
-#
-#   print_success 'Homebrew has been set up'
-# }
+function install_brewfile() {
+  print_info 'Tapping homebrew/bundle.'
+  brew tap homebrew/bundle
+  print_info 'Installing Brewfile.'
+  brew bundle
+  print_success 'Brewfile has been installed.'
+}
 
 
 source script/bootstrap --source-only
@@ -271,6 +274,9 @@ setup_gitconfig
 install_homebrew
 
 install_zsh
+# install_brewfile
+
+
 # install_dotfiles
 
 # echo $SHELL
@@ -287,11 +293,3 @@ install_zsh
 #   echo $(cmd_exists 'zzz')
 #   echo 'zzz exists'
 # fi
-#
-# . script/bla
-#
-# echo $DOTFILES_ROOT
-#
-#
-# echo 'bla'
-# yo
