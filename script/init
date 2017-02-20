@@ -229,51 +229,17 @@ function install_zsh() {
 
 }
 
-function install_homebrew() {
-  print_info 'Checking for Homebrew'
 
-  if ! cmd_exists "brew"; then
-    print_info "Installing Homebrew"
-
-    # Install the correct homebrew for each OS type
-    if test "$(uname)" = "Darwin"
-    then
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
-    then
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-    fi
-
-    brew update
-  fi
-
-  if ! brew_test_package 'git'; then
-    print_info 'Installing Git with Homebrew.'
-    brew install git --with-brewed-curl --with-brewed-openssl --with-gettext
-  fi
-
-  print_success "Homebrew has been setup."
-}
-
-function install_brewfile() {
-  print_info 'Tapping homebrew/bundle.'
-  brew tap homebrew/bundle
-  print_info 'Installing Brewfile.'
-  brew bundle
-  print_success 'Brewfile has been installed.'
-}
-
-
-source script/bootstrap --source-only
+. script/bootstrap --source-only
 
 ask_for_sudo
 setup_hostname
 setup_xcode
 setup_ssh
 setup_gitconfig
-install_homebrew
+. homebrew/setup.sh
 
 install_zsh
-install_brewfile
+. homebrew/brewfile.sh
 
 # install_dotfiles
