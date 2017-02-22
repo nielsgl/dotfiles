@@ -1,4 +1,37 @@
-# holman does dotfiles
+# Hacker.files
+
+My dotfiles and configurations for getting my system up and running with just a few commands.
+
+
+### Status / Todos
+
+- [x] atom
+- [] bin
+- [] docker
+- [] functions
+- [] git
+- [] Homebrew
+- [] macos
+- [x] node (nodenv)
+- [x] node (nvm)
+- [] ruby (rbenv)
+- [] script
+- [] ssh
+- [] vim
+- [] xcode
+- [] zsh
+
+
+
+
+
+
+
+
+
+---
+
+# Niels does dotfiles
 
 Your dotfiles are how you personalize your system. These are mine.
 
