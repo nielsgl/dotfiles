@@ -11,7 +11,7 @@ function install_nodenv() {
 
     ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
     if answer_is_yes; then
-      echo '\n\n# Load nodenv automatically by appending\n# the following to ~/.zshrc:\neval "$(nodenv init -)"\n' >> $HOME/.zshrc
+      printf "\n\n# Load nodenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(nodenv init -)\"\n\n" >> $HOME/.zshrc
     else
       print_info "Please run 'nodenv init' and follow the instructions."
     fi
