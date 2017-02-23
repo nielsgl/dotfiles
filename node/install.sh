@@ -8,7 +8,14 @@ function install_nodenv() {
     brew tap nodenv/nodenv
     brew update
     brew install nodenv nodenv/nodenv/nodenv-package-rehash
-    print_success "Nodenv has been installed. Please run 'nodenv init' and follow the instructions."
+
+    ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
+    if answer_is_yes; then
+      echo '\n\n# Load nodenv automatically by appending\n# the following to ~/.zshrc:\neval "$(nodenv init -)"\n' >> $HOME/.zshrc
+    else
+      print_info "Please run 'nodenv init' and follow the instructions."
+    fi
+    print_success "nodenv has been installed."
   else
     print_success "Nodenv was already installed. Please run 'nodenv init' and follow the instructions."
   fi
