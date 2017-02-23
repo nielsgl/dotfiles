@@ -15,6 +15,10 @@ function install_nodenv() {
     else
       print_info "Please run 'nodenv init' and follow the instructions."
     fi
+
+    print_info "Installing nodenv update in `nodenv root`/plugins"
+    git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
+
     print_success "nodenv has been installed."
   else
     print_success "Nodenv was already installed. Please run 'nodenv init' and follow the instructions."
@@ -26,8 +30,7 @@ function main() {
   ask_for_confirmation "Do you want to install nodenv?"
   if answer_is_yes; then
     install_nodenv
-  fi
-  if ! brew_test_package 'nodenv'; then
+  elif ! brew_test_package 'nodenv'; then
     ask_for_confirmation "Do you want to install nvm?"
     if answer_is_yes; then
       # ...

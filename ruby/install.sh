@@ -9,8 +9,21 @@ function install_rbenv() {
     if answer_is_yes; then
       brew update
       brew install rbenv
+
+      ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
+      if answer_is_yes; then
+        printf "\n\n# Load rbenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(rbenv init -)\"\n\n" >> $HOME/.zshrc
+      else
+        print_info "Please run 'rbenv init' and follow the instructions."
+      fi
+
+      print_info "Installing rbenv update in `rbenv root`/plugins"
+      git clone https://github.com/rkh/rbenv-update.git "$(rbenv root)/plugins/rbenv-update"
+
+      print_success "rbenv has been installed."
+    else
+      print_success "rbenv was already installed. Please run 'rbenv init' and follow the instructions."
     fi
-    print_success "Rbenv has been installed. Please run 'rbenv init' and follow the instructions."
   fi
 }
 
