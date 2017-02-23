@@ -18,7 +18,7 @@ function install_pyenv() {
       fi
 
       print_info "Installing pyenv update in `pyenv root`/plugins"
-      git clone git://github.com/yyuu/pyenv-update.git "$(pyenv root)"/plugins/pyenv-update
+      git clone git://github.com/yyuu/pyenv-update.git "$(pyenv root)/plugins/pyenv-update"
 
       # print_info "Installing pyenv-virtualenv in `pyenv root`/plugins"
       # git clone https://github.com/yyuu/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
