@@ -115,6 +115,7 @@ done
 # done
 . node/install.sh
 . ruby/install.sh
+. python/install.sh
 
 print_success "Done!"
 # install_dotfiles
