@@ -4,6 +4,7 @@
 # https://github.com/nodenv/nodenv
 
 function install_nodenv() {
+
   if ! brew_test_package 'nodenv'; then
     brew tap nodenv/nodenv
     brew update
@@ -17,7 +18,13 @@ function install_nodenv() {
     fi
 
     print_info "Installing nodenv update in `nodenv root`/plugins"
-    git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update"
+    git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)/plugins/nodenv-update" &> /dev/null
+
+    print_info "Installing nodenv vars in `nodenv root`/plugins"
+    git clone https://github.com/nodenv/nodenv-vars.git "$(nodenv root)/plugins/nodenv-vars" &> /dev/null
+
+    print_info "Installing nodenv package rehash in `nodenv root`/plugins"
+    git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)/plugins/nodenv-package-rehash" &> /dev/null
 
     print_success "nodenv has been installed."
   else
@@ -37,9 +44,9 @@ function main() {
       # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
       curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
       print_success "nvm has been installed and added to your shell config."
+    else
+      print_error "Unable to install nvm, please remove nodenv first."
     fi
-  else
-    print_error "Unable to install nvm, please remove nodenv first."
   fi
 }
 
