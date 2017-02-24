@@ -14,7 +14,7 @@ My dotfiles and configurations for getting my system up and running with just a 
 - [] macos
 - [x] node (nodenv)
 - [x] node (nvm)
-- [] python (pyenv)
+- [x] python (pyenv)
 - [x] ruby (rbenv)
 - [] script
 - [] ssh
