@@ -4,9 +4,9 @@
 # https://github.com/nodenv/nodenv
 
 function install_rbenv() {
-  if ! brew_test_package 'rbenv'; then
-    ask_for_confirmation "Do you want to install rbenv?"
-    if answer_is_yes; then
+  ask_for_confirmation "Do you want to install rbenv?"
+  if answer_is_yes; then
+    if ! brew_test_package 'rbenv'; then
       brew update
       brew install rbenv
 
@@ -19,6 +19,9 @@ function install_rbenv() {
 
       print_info "Installing rbenv update in `rbenv root`/plugins"
       git clone https://github.com/rkh/rbenv-update.git "$(rbenv root)/plugins/rbenv-update"
+
+      print_info "Installing rbenv vars in `rbenv root`/plugins"
+      git clone https://github.com/rbenv/rbenv-vars.git "$(rbenv root)/plugins/rbenv-vars"
 
       print_success "rbenv has been installed."
     else
