@@ -18,10 +18,10 @@ function install_rbenv() {
       fi
 
       print_info "Installing rbenv update in `rbenv root`/plugins"
-      git clone https://github.com/rkh/rbenv-update.git "$(rbenv root)/plugins/rbenv-update"
+      git clone https://github.com/rkh/rbenv-update.git "$(rbenv root)/plugins/rbenv-update" &> /dev/null
 
       print_info "Installing rbenv vars in `rbenv root`/plugins"
-      git clone https://github.com/rbenv/rbenv-vars.git "$(rbenv root)/plugins/rbenv-vars"
+      git clone https://github.com/rbenv/rbenv-vars.git "$(rbenv root)/plugins/rbenv-vars" &> /dev/null
 
       print_success "rbenv has been installed."
     else
