@@ -66,9 +66,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='atom'
+  export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='atom'
 fi
 
 # Compilation flags
@@ -85,3 +85,21 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# Load nodenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(nodenv init -)"
+
+
+
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(rbenv init -)"
+
+
+
+# Load pyenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
