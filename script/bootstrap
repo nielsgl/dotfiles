@@ -131,11 +131,11 @@ install_dotfiles () {
 
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
-    echo 'found src'
-    echo $src
+    # echo 'found src'
+    # echo $src
     dst="$HOME/.$(basename "${src%.*}")"
-    echo $dst
-    # link_file "$src" "$dst"
+    # echo $dst
+    link_file "$src" "$dst"
   done
 }
 
