@@ -9,7 +9,7 @@ My dotfiles and configurations for getting my system up and running with just a 
 - [x] bin
 - [] docker
 - [] functions
-- [] git
+- [x] git
 - [] Homebrew
 - [] macos
 - [x] node (nodenv)
