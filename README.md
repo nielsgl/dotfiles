@@ -20,7 +20,7 @@ My dotfiles and configurations for getting my system up and running with just a 
 - [x] ssh
 - [ ] system
 - [ ] vim
-- [ ] xcode
+- [x] xcode
 - [ ] zsh
 
 
