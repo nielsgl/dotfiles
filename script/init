@@ -40,6 +40,12 @@ function ask() {
   read -e $2
 }
 
+function ask_input() {
+  print_question "$1"
+  read -n 1 $2
+  printf "\n"
+}
+
 function ask_for_confirmation() {
   print_question "$1 (y/n)"
   read -n 1
@@ -54,7 +60,8 @@ function cmd_exists() {
 
 function print_question() {
   # Print output in yellow
-  printf "\e[0;33m  [?] $1\e[0m "
+  # printf "\e[0;33m  [?] $1\e[0m "
+  printf "\r  [ \033[0;33m?\033[0m ] $1 "
 }
 
 function get_answer() {
@@ -72,7 +79,8 @@ function print_result() {
 
 function print_error() {
   # Print output in red
-  printf "\e[0;31m  [✖] $1 $2\e[0m\n"
+  # printf "\e[0;31m  [✖] $1 $2\e[0m\n"
+  printf "\r\033[2K  [\033[0;31m ✖ \033[0m] $1 $2\n"
 }
 
 function print_info() {
@@ -82,7 +90,8 @@ function print_info() {
 
 function print_success() {
   # Print output in green
-  printf "\e[0;32m  [✔] $1\e[0m\n"
+  # printf "\e[0;32m  [✔] $1\e[0m\n"
+  printf "\r\033[2K  [ \033[00;32m✔\033[0m ] $1\n"
 }
 
 function brew_test_package() {
@@ -118,5 +127,7 @@ done
 . ruby/install.sh
 . python/install.sh
 
-print_success "Done!"
+
 install_dotfiles
+
+print_success "Done!"
