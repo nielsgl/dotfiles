@@ -10,11 +10,13 @@ function install_rbenv() {
       brew update
       brew install rbenv
 
-      ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
-      if answer_is_yes; then
-        printf "\n\n# Load rbenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(rbenv init -)\"\n\n" >> $HOME/.zshrc
-      else
-        print_info "Please run 'rbenv init' and follow the instructions."
+      if ! find_in_zshrc "eval \"\$(rbenv init -)\""; then
+        ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
+        if answer_is_yes; then
+          printf "\n\n# Load rbenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(rbenv init -)\"\n\n" >> $HOME/.zshrc
+        else
+          print_info "Please run 'rbenv init' and follow the instructions."
+        fi
       fi
 
       print_info "Installing rbenv update in `rbenv root`/plugins"

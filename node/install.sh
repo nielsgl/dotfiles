@@ -10,11 +10,13 @@ function install_nodenv() {
     brew update
     brew install nodenv nodenv/nodenv/nodenv-package-rehash
 
-    ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
-    if answer_is_yes; then
-      printf "\n\n# Load nodenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(nodenv init -)\"\n\n" >> $HOME/.zshrc
-    else
-      print_info "Please run 'nodenv init' and follow the instructions."
+    if ! find_in_zshrc "eval \"\$(nodenv init -)\""; then
+      ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
+      if answer_is_yes; then
+        printf "\n\n# Load nodenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(nodenv init -)\"\n\n" >> $HOME/.zshrc
+      else
+        print_info "Please run 'nodenv init' and follow the instructions."
+      fi
     fi
 
     print_info "Installing nodenv update in `nodenv root`/plugins"

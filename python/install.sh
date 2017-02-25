@@ -8,13 +8,15 @@ function install_pyenv() {
     ask_for_confirmation "Do you want to install pyenv?"
     if answer_is_yes; then
       brew update
-      brew install pyenv pyenv-virtualenv # pyenv-virtualenv
+      brew install pyenv pyenv-virtualenv
 
-      ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
-      if answer_is_yes; then
-        printf "\n\n# Load pyenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\"\n" >> $HOME/.zshrc
-      else
-        print_info "Please run 'pyenv init' and follow the instructions."
+      if ! find_in_zshrc "eval \"\$(pyenv init -)\""; then
+        ask_for_confirmation "Do you want to add the init script to ~/.zshrc?"
+        if answer_is_yes; then
+          printf "\n\n# Load pyenv automatically by appending\n# the following to ~/.zshrc:\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\"\n" >> $HOME/.zshrc
+        else
+          print_info "Please run 'pyenv init' and follow the instructions."
+        fi
       fi
 
       print_info "Installing pyenv update in `pyenv root`/plugins"
