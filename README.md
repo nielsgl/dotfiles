@@ -6,7 +6,7 @@ My dotfiles and configurations for getting my system up and running with just a 
 ### Status / Todos
 
 - [x] atom
-- [] bin
+- [x] bin
 - [] docker
 - [] functions
 - [] git
@@ -23,7 +23,9 @@ My dotfiles and configurations for getting my system up and running with just a 
 - [] zsh
 
 
+### Thanks
 
+https://github.com/nicksp/dotfiles
 
 
 
