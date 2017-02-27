@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export DOTFILES=$HOME/.dotfiles
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -70,6 +71,17 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='atom'
 fi
+
+# Load all path files
+# config_files=($HOME/.dotfiles/**/*.zsh)
+# echo $config_files
+# # for file in ${(M)config_files:#*/path.zsh}; do
+# for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
+# #   # source $file
+# 	echo $file
+# done
+export PATH=$DOTFILES/bin:$PATH
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
