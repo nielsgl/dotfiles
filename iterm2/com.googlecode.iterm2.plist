@@ -475,7 +475,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>558 234 632 303 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>354 378 796 473 0 0 1440 877 </string>
+	<string>354 300 918 512 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 354 650 523 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -712,7 +712,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -1123,6 +1123,10 @@
 	<string>321874A8-711B-4C64-AFD0-1A3C44A4C925</string>
 	<key>NoSyncLastTipTime</key>
 	<real>509898659.00051802</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
