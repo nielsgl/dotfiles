@@ -12,8 +12,11 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "23b098d2-0be9-4130-941f-408e814f6fc5"
+  "linter-docker": {}
   welcome:
     showOnStartup: false
 ".editorconfig.source":
   editor:
     softWrapAtPreferredLineLength: true
+"file-types":
+  "^Dockerfile\\..*$": "source.dockerfile"
