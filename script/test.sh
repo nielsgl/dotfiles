@@ -17,3 +17,15 @@ if ! find_in_zshrc "eval \"\$(nodenv init -)\""; then
 else
   echo "found"
 fi
+
+function cmd_exists() {
+  [ -x "$(command -v "$1")" ] \
+    && return 0 \
+    || return 1
+}
+
+if ! cmd_exists 'nvm'; then
+	echo 'nodenv exists'
+else
+	echo 'nodenv does not exist'
+fi

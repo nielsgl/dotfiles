@@ -26,9 +26,9 @@ function install_pyenv() {
       # git clone https://github.com/yyuu/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
       print_success "pyenv has been installed."
-    else
-      print_success "pyenv was already installed. Please run 'pyenv init' and follow the instructions."
-    fi
+		fi
+  else
+    print_success "pyenv was already installed."
   fi
 }
 

@@ -35,21 +35,29 @@ function install_nodenv() {
 }
 
 function main() {
-  print_info "You can install and manage node with nodenv or nvm"
-  ask_for_confirmation "Do you want to install nodenv?"
-  if answer_is_yes; then
-    install_nodenv
-  elif ! brew_test_package 'nodenv'; then
-    ask_for_confirmation "Do you want to install nvm?"
-    if answer_is_yes; then
-      # ...
-      # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-      print_success "nvm has been installed and added to your shell config."
-    else
-      print_error "Unable to install nvm, please remove nodenv first."
-    fi
-  fi
+	if ! cmd_exists 'nodenv' && ! cmd_exists 'nvm'; then
+		print_info "You can install and manage node with nodenv or nvm"
+	  ask_for_confirmation "Do you want to install nodenv?"
+	  if answer_is_yes; then
+	    install_nodenv
+	  elif ! brew_test_package 'nodenv'; then
+	    ask_for_confirmation "Do you want to install nvm?"
+	    if answer_is_yes; then
+	      # ...
+	      # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+	      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+	      print_success "nvm has been installed and added to your shell config."
+	    else
+	      print_error "Unable to install nvm, please remove nodenv first."
+	    fi
+	  fi
+	else
+		if cmd_exists 'nodenv'; then
+			print_success 'nodenv was already installed'
+		elif cmd_exists 'nvm'; then
+			print_success 'nvm was already installed'
+		fi
+	fi
 }
 
 if [ "${1}" != "--source-only" ]; then
