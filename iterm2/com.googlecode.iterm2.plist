@@ -475,9 +475,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>558 234 632 303 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>354 300 918 512 0 0 1440 877 </string>
+	<string>354 271 1016 502 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 354 650 523 0 0 1440 877 </string>
+	<string>0 69 1434 808 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 64 1440 813 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -881,9 +881,9 @@
 				<key>0xf702-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>11</integer>
+					<integer>10</integer>
 					<key>Text</key>
-					<string>0x1b 0x1b 0x5b 0x44</string>
+					<string>b</string>
 				</dict>
 				<key>0xf703-0x220000</key>
 				<dict>
@@ -909,9 +909,9 @@
 				<key>0xf703-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>11</integer>
+					<integer>10</integer>
 					<key>Text</key>
-					<string>0x1b 0x1b 0x5b 0x43</string>
+					<string>f</string>
 				</dict>
 				<key>0xf704-0x20000</key>
 				<dict>
