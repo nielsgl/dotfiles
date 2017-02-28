@@ -475,7 +475,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>558 234 632 303 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>354 271 1016 502 0 0 1440 877 </string>
+	<string>354 363 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 69 1434 808 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -678,6 +678,8 @@
 			<integer>80</integer>
 			<key>Command</key>
 			<string></string>
+			<key>Cursor Boost</key>
+			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1039,6 +1041,8 @@
 				<key>Red Component</key>
 				<real>0.023</real>
 			</dict>
+			<key>Minimum Contrast</key>
+			<real>0.0</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -1122,7 +1126,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>321874A8-711B-4C64-AFD0-1A3C44A4C925</string>
 	<key>NoSyncLastTipTime</key>
-	<real>509898659.00051802</real>
+	<real>509990748.68826997</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1137,6 +1141,7 @@
 		<string>0000</string>
 		<string>0001</string>
 		<string>0002</string>
+		<string>0003</string>
 	</array>
 	<key>PointerActions</key>
 	<dict>
