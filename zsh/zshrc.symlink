@@ -8,7 +8,7 @@ export DOTFILES=$HOME/.dotfiles
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="bullet-train"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -99,17 +99,17 @@ export PATH=$DOTFILES/bin:$PATH
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-config_files=($DOTFILES/**/*.zsh)
+# config_files=($DOTFILES/**/*.zsh)
 
 # load the path files
-for file in ${(M)config_files:#*/aliases.zsh}; do
-  source $file
-done
+# for file in ${(M)config_files:#*/aliases.zsh}; do
+#   source $file
+# done
 
 # load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}; do
-  source $file
-done
+# for file in ${(M)config_files:#*/completion.zsh}; do
+#   source $file
+# done
 
 
 # Load nodenv automatically by appending
@@ -128,3 +128,22 @@ eval "$(rbenv init -)"
 # the following to ~/.zshrc:
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# BULLETTRAIN_NODENV_HIDE_GLOBAL = false
+
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  # status
+  # custom
+  context
+  # perl
+  # ruby
+  # virtualenv
+	nodenv
+  # nvm
+  # go
+	dir
+	git
+  # hg
+  # cmd_exec_time
+)

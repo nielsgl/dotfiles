@@ -16,7 +16,7 @@ My dotfiles and configurations for getting my system up and running with just a 
 - [x] node (nvm)
 - [x] python (pyenv)
 - [x] ruby (rbenv)
-- [ ] script
+- [x] script
 - [x] ssh
 - [ ] system
 - [ ] vim
