@@ -53,8 +53,8 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-# aws brew bundler docker gem history jira jsontools npm osx pyenv pylint python rails redis-cli
-plugins=(git)
+# aws brew bundler docker gem history jira jsontools npm osx pyenv pylint python rails redis-cli z
+plugins=(git z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +97,7 @@ export PATH=$DOTFILES/bin:$PATH
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tmp="cd ~/Desktop/tmp"
 
 
 # config_files=($DOTFILES/**/*.zsh)
