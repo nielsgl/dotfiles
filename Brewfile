@@ -33,6 +33,14 @@ brew 'sqlite', args: ['with-dbstat', 'with-functions']
 brew 'ssh-copy-id'
 brew 'tree'
 brew 'zsh', args: ['with-unicode9']
+brew 'certbot'
+brew 'dockviz'
+brew 'ruby', args: ['with-gdbm', 'with-libffi']
+brew 'zsh'
+brew 'zsh-history-substring-search'
+brew 'zsh-syntax-highlighting'
+brew 'swig'
+
 
 cask 'adobe-reader'
 cask 'android-file-transfer'
