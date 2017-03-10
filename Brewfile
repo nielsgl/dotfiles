@@ -40,6 +40,7 @@ brew 'zsh'
 brew 'zsh-history-substring-search'
 brew 'zsh-syntax-highlighting'
 brew 'swig'
+brew 'thefuck'
 
 
 cask 'adobe-reader'
