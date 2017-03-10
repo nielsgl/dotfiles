@@ -1,4 +1,7 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "cdf8a2f2-d06c-420c-8e5f-b487ba34d641"
   core:
     disabledPackages: [
       "background-tips"
@@ -13,6 +16,7 @@
   "exception-reporting":
     userId: "23b098d2-0be9-4130-941f-408e814f6fc5"
   "linter-docker": {}
+  "project-manager": {}
   welcome:
     showOnStartup: false
 ".editorconfig.source":

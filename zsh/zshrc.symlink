@@ -54,7 +54,7 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 
 # aws brew bundler docker gem history jira jsontools npm osx pyenv pylint python rails redis-cli z
-plugins=(git z)
+plugins=(git z colored-man-pages history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
