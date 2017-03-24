@@ -16,6 +16,8 @@
   "exception-reporting":
     userId: "23b098d2-0be9-4130-941f-408e814f6fc5"
   "linter-docker": {}
+  "linter-ui-default":
+    showPanel: true
   "project-manager": {}
   welcome:
     showOnStartup: false
