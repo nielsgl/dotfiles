@@ -132,6 +132,7 @@ eval "$(rbenv init -)"
 # the following to ~/.zshrc:
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 
 # Load thefuck
