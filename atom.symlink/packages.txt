@@ -21,6 +21,7 @@ linter@2.1.2
 linter-docker@0.1.5
 linter-eslint@8.1.4
 linter-markdown@3.1.0
+linter-remark@3.0.0
 linter-swagger@0.4.0
 linter-tslint@0.15.0
 linter-ui-default@1.2.1
