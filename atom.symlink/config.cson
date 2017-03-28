@@ -6,6 +6,7 @@
     disabledPackages: [
       "background-tips"
       "language-gfm"
+      "linter-markdown"
     ]
     telemetryConsent: "limited"
     warnOnLargeFileLimit: 10

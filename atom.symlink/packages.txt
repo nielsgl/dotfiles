@@ -28,7 +28,7 @@ linter-ui-default@1.2.1
 markdown-scroll-sync@2.1.2
 minimap@4.26.8
 package-script-runner@0.2.1
-pretty-json@1.6.1
+pretty-json@1.6.2
 project-manager@3.3.4
 script@3.14.1
 set-syntax@0.3.2
