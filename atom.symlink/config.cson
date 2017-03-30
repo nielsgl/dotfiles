@@ -6,6 +6,7 @@
     disabledPackages: [
       "background-tips"
       "language-gfm"
+      "linter-markdown"
     ]
     telemetryConsent: "limited"
     warnOnLargeFileLimit: 10
@@ -16,6 +17,7 @@
   "exception-reporting":
     userId: "23b098d2-0be9-4130-941f-408e814f6fc5"
   "linter-docker": {}
+  "linter-markdown": {}
   "linter-ui-default":
     showPanel: true
   "package-script-runner":
