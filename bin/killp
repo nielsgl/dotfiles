@@ -8,4 +8,4 @@ set -e
 PORT=$1
 
 printf "\e[0;36mKilling process on port:\e[0m $PORT\n";
-kill $(lsof -i:${PORT} | grep -v 'COMMAND' | awk '{print $2}') &> /dev/null
+kill $(lsof -i:${PORT} | grep -v 'COMMAND' | grep 'node\|java' | awk '{print $2}') &> /dev/null

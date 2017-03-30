@@ -5801,7 +5801,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>2390 491 918 495 1920 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1920 18 1907 1039 1920 0 1920 1057 </string>
+	<string>1920 2 1913 1055 1920 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>294 160 585 373 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -6450,7 +6450,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>0CB3E796-02F1-4E84-8726-6B8B45A48C92</string>
 	<key>NoSyncLastTipTime</key>
-	<real>511792703.94754201</real>
+	<real>512411198.59327197</real>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -6485,6 +6485,11 @@
 		<string>0024</string>
 		<string>0025</string>
 		<string>0026</string>
+		<string>0027</string>
+		<string>0028</string>
+		<string>0029</string>
+		<string>0030</string>
+		<string>0031</string>
 	</array>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
@@ -6534,7 +6539,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-03-21T12:38:23Z</date>
+	<date>2017-03-28T12:33:32Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -6545,8 +6550,12 @@
 	<integer>0</integer>
 	<key>UseBorder</key>
 	<false/>
+	<key>findIgnoreCase_iTerm</key>
+	<true/>
+	<key>findRegex_iTerm</key>
+	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.14</string>
+	<string>3.0.15</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
