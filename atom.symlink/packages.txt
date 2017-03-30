@@ -20,17 +20,18 @@ language-markdown@0.20.0
 linter@2.1.2
 linter-docker@0.1.5
 linter-eslint@8.1.4
+linter-js-yaml@1.2.7
 linter-markdown@3.1.0
-linter-remark@3.0.0
 linter-swagger@0.4.0
 linter-tslint@0.15.0
 linter-ui-default@1.2.1
 markdown-scroll-sync@2.1.2
 minimap@4.26.8
 package-script-runner@0.2.1
-pretty-json@1.6.2
+pretty-json@1.6.1
 project-manager@3.3.4
 script@3.14.1
 set-syntax@0.3.2
 synced-sidebar@0.4.3
+yaml-path@0.1.1
 
