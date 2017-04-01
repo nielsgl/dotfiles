@@ -113,21 +113,28 @@ function find_in_zshrc() {
 }
 
 
-. script/bootstrap --source-only
+function main() {
+  rootdir="$(cd "$(dirname "$BASH_SOURCE")"; cd ..; pwd)"
+  . $rootdir/script/bootstrap --source-only
 
-ask_for_sudo
+  ask_for_sudo
 
-for setup in macos xcode ssh git homebrew zsh; do
-  . $setup/setup.sh
-done
+  for setup in macos xcode ssh git homebrew zsh; do
+    . $rootdir/$setup/setup.sh
+  done
 
-. homebrew/brewfile.sh
+  . $rootdir/homebrew/brewfile.sh
 
-. node/install.sh
-. ruby/install.sh
-. python/install.sh
+  . $rootdir/node/install.sh
+  . $rootdir/ruby/install.sh
+  . $rootdir/python/install.sh
 
 
-install_dotfiles
+  install_dotfiles
 
-print_success "Done!"
+  print_success "Done!"
+}
+
+if [ "${1}" != "--source-only" ]; then
+	main "${@}"
+fi
