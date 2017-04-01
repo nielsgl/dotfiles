@@ -125,10 +125,9 @@ function main() {
 
   . $rootdir/homebrew/brewfile.sh
 
-  . $rootdir/node/install.sh
-  . $rootdir/ruby/install.sh
-  . $rootdir/python/install.sh
-
+  for language in node ruby python; do
+    . $rootdir/$language/install.sh
+  done
 
   install_dotfiles
 
