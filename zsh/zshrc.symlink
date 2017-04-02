@@ -14,22 +14,51 @@
 
 echo "path: $(pwd)"
 
-EXPORT DOTFILES=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 
 source $DOTFILES/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle command-not-found
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 antigen theme robbyrussell
 
+
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+# antigen bundle git
+# antigen bundle command-not-found
+antigen bundles <<EOBUNDLES
+  # Guess what to install when running an unknown command.
+  git
+  z
+  colored-man-pages
+  copydir
+  npm
+  brew
+  osx
+  zsh_reload
+  node
+  colorize
+  command-not-found
+  docker
+EOBUNDLES
+
+# Other bundles
+# Syntax highlighting bundle.
+antigen bundles <<EOBUNDLES
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+EOBUNDLES
+
+
 # Tell Antigen that you're done.
 antigen apply
+
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
