@@ -161,7 +161,8 @@ antigen bundles <<EOBUNDLES
 EOBUNDLES
 
 # Load the theme.
-antigen theme robbyrussell
+# antigen theme robbyrussell
+antigen theme nielsgl/bullet-train.zsh
 
 
 
