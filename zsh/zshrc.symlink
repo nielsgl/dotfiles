@@ -57,7 +57,11 @@ ZSH_CUSTOM=$DOTFILES/zsh/custom
 # Add wisely, as too many plugins slow down shell startup.
 
 # aws brew bundler docker gem history jira jsontools npm osx pyenv pylint python rails redis-cli z
+
+# colorize command-not-found common-aliases
 plugins=(git z colored-man-pages copydir npm brew osx zsh_reload)
+
+plugins+=(node npm colorize command-not-found docker)
 
 source $ZSH/oh-my-zsh.sh
 
