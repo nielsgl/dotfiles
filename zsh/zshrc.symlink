@@ -5,26 +5,94 @@
 # setopt appendhistory autocd extendedglob notify
 # bindkey -e
 # # End of lines configured by zsh-newuser-install
-# # The following lines were added by compinstall
+# The following lines were added by compinstall
 # zstyle :compinstall filename '/Users/niels/.zshrc'
-#
+
 # autoload -Uz compinit
 # compinit
-# # End of lines added by compinstall
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+# End of lines added by compinstall
 
-echo "path: $(pwd)"
+#
+# Notes for profiling
+# http://blog.xebia.com/profiling-zsh-shell-scripts/
+# https://kev.inburke.com/kevin/profiling-zsh-startup-time/
+# https://github.com/Tarrasch/zsh-autoenv
+# https://superuser.com/questions/236953/zsh-starts-incredibly-slowly
+# https://carlosbecker.com/posts/speeding-up-zsh/
+# https://gist.github.com/ctechols/ca1035271ad134841284
+
+
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# profiling zsh boot
+zmodload zsh/zprof
+
+# export PYENV_DEBUG=1
 
 export DOTFILES=$HOME/.dotfiles
 
 source $DOTFILES/antigen/antigen.zsh
 
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=5
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=$DOTFILES/zsh/custom
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+
+# aws brew bundler docker gem history jira jsontools npm osx pyenv pylint python rails redis-cli z
+
+# colorize command-not-found common-aliases
+# plugins=(git z colored-man-pages copydir npm brew osx zsh_reload)
+
+# plugins+=(node npm colorize command-not-found docker)
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
-
-
-# Load the theme.
-antigen theme robbyrussell
-
 
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
@@ -34,31 +102,184 @@ antigen bundles <<EOBUNDLES
   # Guess what to install when running an unknown command.
   git
   z
+  # docker
   colored-man-pages
   copydir
-  npm
+  node
+  # npm
   brew
   osx
   zsh_reload
   node
   colorize
   command-not-found
-  docker
 EOBUNDLES
 
 # Other bundles
 # Syntax highlighting bundle.
 antigen bundles <<EOBUNDLES
+  djui/alias-tips
+  kingsj/atom_plugin.zsh
+  zuxfoucault/colored-man-pages_mod
+  rutchkiwi/copyzshell
+  molovo/crash
+  # b4b4r07/emoji-cli
+  zigius/expand-ealias.plugin.zsh
+  # sobolevn/git-secret
+  washtubs/gitsync
+  or17191/going_places
+  # git-time-metric/gtm-terminal-plugin
+  zdharma/history-search-multi-word
+  wulfgarpro/history-sync
+  # tysonwolker/iterm-tab-colors
+  joow/macos-zsh-plugin
+  zilongqiu/monorepo-zsh-plugin
+  zpm-zsh/mysql-colorize
+  jsahlen/nodenv.plugin.zsh
+  marshallmick007/osx-dev-zsh-plugin
+  mwilliammyers/plugin-osx
+  gko/project
+  molovo/revolver
+  zlsun/solarized-man
+  LockonS/terminal-workload-report
+  molovo/tipz
+  RobertAudi/tsm
+  unixorn/tumult.plugin.zsh
+  Tarrasch/zsh-colors
+  joel-porquet/zsh-dircolors-solarized
+  # changyuheng/zsh-interactive-cd
+  TBSliver/zsh-plugin-tmux-simple
+  willghatch/zsh-saneopt
+  # psprint/zsh-select
+  # paulmelnikow/zsh-startup-timer
+  ascii-soup/zsh-url-highlighter
+  # wbinglee/zsh-wakatime
+  # :)
   zsh-users/zsh-completions
   zsh-users/zsh-autosuggestions
+
+EOBUNDLES
+
+# Load the theme.
+antigen theme robbyrussell
+
+
+
+# User configuration
+
+# Return only unique results from history substring search
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE="true"
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='atom'
+fi
+
+# Load all path files
+# config_files=($HOME/.dotfiles/**/*.zsh)
+# echo $config_files
+# # for file in ${(M)config_files:#*/path.zsh}; do
+# for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
+# #   # source $file
+# 	echo $file
+# done
+export PATH=$DOTFILES/bin:$PATH
+
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tmp="cd ~/Desktop/tmp"
+
+
+# config_files=($DOTFILES/**/*.zsh)
+
+# load the path files
+# for file in ${(M)config_files:#*/aliases.zsh}; do
+#   source $file
+# done
+source $DOTFILES/zsh/zshrc.local.zsh
+
+# load every completion after autocomplete loads
+# for file in ${(M)config_files:#*/completion.zsh}; do
+#   source $file
+# done
+
+
+# Load nodenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(nodenv init -)"
+
+
+
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(rbenv init -)"
+
+
+
+# Load pyenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+
+# Load thefuck
+eval "$(thefuck --alias)"
+
+
+# BULLETTRAIN_NODENV_HIDE_GLOBAL = false
+
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  # status
+  # custom
+  context
+  # perl
+  # ruby
+  # virtualenv
+	nodenv
+  # nvm
+  # go
+	dir
+	git
+  # hg
+  # cmd_exec_time
+)
+
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(node_version rbenv virtualenv status history time load ram)
+
+
+# Other bundles
+# Syntax highlighting bundle.
+antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-history-substring-search
 EOBUNDLES
 
-
-# Tell Antigen that you're done.
-antigen apply
-
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Tell Antigen that you're done.
+antigen apply
