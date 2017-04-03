@@ -94,6 +94,9 @@ HIST_STAMPS="mm/dd/yyyy"
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+# Load the theme.
+# antigen theme robbyrussell
+antigen theme nielsgl/bullet-train.zsh bullet-train
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 # antigen bundle git
@@ -159,10 +162,6 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-autosuggestions
 
 EOBUNDLES
-
-# Load the theme.
-# antigen theme robbyrussell
-antigen theme nielsgl/bullet-train.zsh
 
 
 
